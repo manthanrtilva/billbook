@@ -59,28 +59,5 @@ namespace BillBook {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;html&gt;
-        ///&lt;body&gt;
-        ///
-        ///&lt;/body&gt;
-        ///&lt;/html&gt;.
-        /// </summary>
-        internal static string BillTemplate {
-            get {
-                return ResourceManager.GetString("BillTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap welcome {
-            get {
-                object obj = ResourceManager.GetObject("welcome", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
