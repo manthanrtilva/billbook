@@ -59,5 +59,15 @@ namespace BillBook {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BillBook {
+            get {
+                object obj = ResourceManager.GetObject("BillBook", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
