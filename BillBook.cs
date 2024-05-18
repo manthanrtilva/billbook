@@ -9,6 +9,7 @@ namespace BillBook
     {
         DatabaseOperations databaseOperations = null;
         ProductList productList = null;
+        CustomerList customerList = null;
         public BillBook()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace BillBook
             }
             databaseOperations = new DatabaseOperations();
             productList = new ProductList(databaseOperations);
+            customerList = new CustomerList(databaseOperations);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,6 +61,16 @@ namespace BillBook
             {
                 Controls.RemoveAt(Controls.Count - 1);
             }
+            customerList.Location = new System.Drawing.Point(0, 29);
+            customerList.LoadData();
+            Controls.Add(customerList);
+        }
+
+        private void newCustomerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var customer = new CustomerForm(databaseOperations);
+            customer.ShowDialog();
+
         }
     }
 }
