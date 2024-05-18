@@ -72,5 +72,16 @@ namespace BillBook
             customer.ShowDialog();
 
         }
+
+        private void newBillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var bill = new Bill(databaseOperations);
+            while (Controls.Count > 1)
+            {
+                Controls.RemoveAt(Controls.Count - 1);
+            }
+            bill.Location = new System.Drawing.Point(0, 29);
+            Controls.Add(bill);
+        }
     }
 }

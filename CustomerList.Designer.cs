@@ -193,6 +193,7 @@
             this.Controls.Add(this.nameGroupBox);
             this.Name = "CustomerList";
             this.Size = new System.Drawing.Size(900, 572);
+            this.Load += new System.EventHandler(this.CustomerList_Load);
             this.nameGroupBox.ResumeLayout(false);
             this.nameGroupBox.PerformLayout();
             this.phoneGroupBox.ResumeLayout(false);

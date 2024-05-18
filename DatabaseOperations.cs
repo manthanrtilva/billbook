@@ -45,6 +45,8 @@ namespace BillBook
     public class DatabaseOperations
     {
         const string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=BillBook.mdb";
+        List<string> allProductName = new List<string>();
+        bool productUpdate = true;
         public DatabaseOperations() 
         {
             
@@ -60,6 +62,7 @@ namespace BillBook
                     {
                         command.CommandText = string.Format("INSERT INTO PRODUCTS (PNAME,PPRICE,PGST,PQUANTITY) values('{0}',{1},{2},{3})", name.ToUpper(), price, gst, quantity);
                         command.ExecuteNonQuery();
+                        productUpdate = true;
                     }
                 }
             }
@@ -72,7 +75,7 @@ namespace BillBook
                 MessageBox.Show(ex.Message);
             }
         }
-        public List<Product> GetProducts(string name = "")
+        public List<Product> GetProducts(string name = "", bool like = true)
         {
             List<Product> products = new List<Product>();
             try
@@ -83,15 +86,20 @@ namespace BillBook
                     string where = string.Empty;
                     if (name.Length > 0)
                     {
-                        where += string.Format("AND PNAME like '%{0}%' ", name.ToUpper());
+                        if (like)
+                        {
+                            where += string.Format("AND PNAME like '%{0}%' ", name.ToUpper());
+                        }
+                        else 
+                        {
+                            where += string.Format("AND PNAME = '{0}' ", name.ToUpper());
+                        }
                     }
                     using (OleDbCommand command = new OleDbCommand(string.Format("SELECT ID, PPRICE, PGST, PQUANTITY, PNAME, PCREATED FROM PRODUCTS  WHERE 1 = 1 {0} ORDER BY PNAME ASC", where), connection))
                     {
                         var reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            //Debug.WriteLine(reader.GetDataTypeName(5));
-                            
                             var p = new Product(reader.GetInt32(0), reader.GetString(4), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetDateTime(5).ToString());
                             products.Add(p);
                         }
@@ -103,6 +111,19 @@ namespace BillBook
                 MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
             return products;
+        }
+        public List<String> GetAllProductName()
+        {
+            if(productUpdate)
+            {
+                productUpdate = false;
+                allProductName.Clear();
+                GetProducts().ForEach(p =>
+                {
+                    allProductName.Add(p.Name);
+                });
+            }
+            return allProductName;
         }
 
 
@@ -117,6 +138,7 @@ namespace BillBook
                     {
                         command.CommandText = string.Format("DELETE FROM PRODUCTS WHERE ID = {0}", id);
                         command.ExecuteNonQuery();
+                        productUpdate = true;
                     }
                 }
             }
@@ -141,6 +163,7 @@ namespace BillBook
                     {
                         command.CommandText = string.Format("UPDATE PRODUCTS SET PNAME='{1}',PPRICE={2},PGST={3},PQUANTITY={4} WHERE ID = {0}", id, name.ToUpper(), price, gst, quaintity);
                         command.ExecuteNonQuery();
+                        productUpdate = true;
                     }
                 }
             }

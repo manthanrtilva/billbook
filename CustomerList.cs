@@ -60,5 +60,10 @@ namespace BillBook
                 }
             }
         }
+
+        private void CustomerList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
