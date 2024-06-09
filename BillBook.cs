@@ -1,115 +1,114 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace BillBook
 {
     public partial class BillBook : Form
     {
-        //private List<DProduct> products = new List<DProduct>();
-        private string[] productNames = null;
-        private string[] customerNumbers = null;
+        DatabaseOperations databaseOperations = null;
+        ProductList productList = null;
+        CustomerList customerList = null;
+        BillList billList = null;
         public BillBook()
         {
             InitializeComponent();
-            productForm = new Product(databaseOps: databaseOps, false);
-            customerForm = new Customer(databaseOps: databaseOps, false);
-            var products = databaseOps.GetProducts();
-            productNames = products.Select(p => p.Name).ToArray();
-            var customers = databaseOps.GetCustomers();
-            customerNumbers = customers.Select(p => p.Phone).ToArray();
-            KeyDown += Invoice_KeyDown;
+            HelperRegistry.SetBrowserEmulationVersion(BrowserEmulationVersion.Version11Edge);
         }
-        private void Invoice_KeyDown(object sender, KeyEventArgs e)
+
+        private void BillBook_Load(object sender, EventArgs e)
         {
-            Debug.WriteLine("hello1");
-            if (e.KeyCode == Keys.P)
+            const string dbPath = "BillBook.mdb";
+            if (!File.Exists(dbPath))
             {
-                Debug.WriteLine("hello2");
-                MessageBox.Show("Hello");
+                using (var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream("BillBook.Resources.BillBook.mdb"))
+                {
+                    using (var file = new FileStream(dbPath, FileMode.Create, FileAccess.Write))
+                    {
+                        resource.CopyTo(file);
+                    }
+                }
             }
+            databaseOperations = new DatabaseOperations();
+            productList = new ProductList(databaseOperations);
+            customerList = new CustomerList(databaseOperations);
+            billList = new BillList(databaseOperations);
+            billList.viewBill += BillList_viewBill;
+            //newBillToolStripMenuItem_Click(null, null);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void BillList_viewBill(object sender, ViewBillArgs e)
         {
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit(); 
-        }
-
-        private void masterBill1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void productToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (productForm.ShowDialog() == DialogResult.OK)
-            {
-                var products = databaseOps.GetProducts();
-                productNames = products.Select(p => p.Name).ToArray();
-            }
-        }
-        private DatabaseOps databaseOps = new DatabaseOps();
-        private Product productForm =null;
-        private Customer customerForm = null;
-
-        private void productToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            while(Controls.Count > 1)
-            {
-                Controls.RemoveAt(Controls.Count - 1);
-            }
-            //var products = new ProductList(databaseOps);
-            //products.Location = new System.Drawing.Point(0, 29);
-            //Controls.Add(products); 
-            var products = new ProductList2(databaseOps);
-            products.Location = new System.Drawing.Point(0, 29);
-            Controls.Add(products);
-        }
-
-        private void billToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+            var bill = new Bill(databaseOperations, e.Id);
             while (Controls.Count > 1)
             {
                 Controls.RemoveAt(Controls.Count - 1);
             }
-            var bill = new MasterBill(databaseOps, productNames, customerNumbers);
             bill.Location = new System.Drawing.Point(0, 29);
             Controls.Add(bill);
         }
 
-        private void customerToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void newProductToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var product = new ProductForm(databaseOperations);
+            product.ShowDialog();
+        }
+
+        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            while(Controls.Count > 1) 
+            {
+                Controls.RemoveAt(Controls.Count - 1);
+            }
+            productList.Location = new System.Drawing.Point(0, 29);
+            productList.LoadData();
+            Controls.Add(productList);
+        }
+
+        private void customersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             while (Controls.Count > 1)
             {
                 Controls.RemoveAt(Controls.Count - 1);
             }
-            var customers = new CustomerList2(databaseOps);
-            customers.Location = new System.Drawing.Point(0, 29);
-            Controls.Add(customers);
+            customerList.Location = new System.Drawing.Point(0, 29);
+            customerList.LoadData();
+            Controls.Add(customerList);
         }
 
-        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void newCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(customerForm.ShowDialog() == DialogResult.OK)
+            var customer = new CustomerForm(databaseOperations);
+            customer.ShowDialog();
+
+        }
+
+        private void newBillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var bill = new Bill(databaseOperations);
+            while (Controls.Count > 1)
             {
-                var customers = databaseOps.GetCustomers();
-                customerNumbers = customers.Select(p => p.Phone).ToArray();
+                Controls.RemoveAt(Controls.Count - 1);
             }
+            bill.Location = new System.Drawing.Point(0, 29);
+            Controls.Add(bill);
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void bilsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
+            while (Controls.Count > 1)
+            {
+                Controls.RemoveAt(Controls.Count - 1);
+            }
+            billList.Location = new System.Drawing.Point(0, 29);
+            billList.LoadData();
+            Controls.Add(billList);
         }
     }
 }
