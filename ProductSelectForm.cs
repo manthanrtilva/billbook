@@ -37,7 +37,10 @@ namespace BillBook
         public new DialogResult ShowDialog()
         {
             nameComboBox.Focus();
-            nameComboBox.SelectedIndex = 0;
+            if (nameComboBox.Items.Count > 0)
+            {
+                nameComboBox.SelectedIndex = 0;
+            }
             quantityNumericUpDown.Value = 1;
             ActiveControl = nameComboBox;
             return base.ShowDialog();

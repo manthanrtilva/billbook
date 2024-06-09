@@ -69,5 +69,36 @@ namespace BillBook {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;style type=&quot;text/css&quot;&gt;
+        ///        table, th, td {
+        ///          border: 1px solid black;
+        ///          border-collapse: collapse;
+        ///        }             
+        ///    &lt;/style&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///    &lt;table id=&quot;items&quot;&gt;
+        ///        &lt;thead&gt;
+        ///            &lt;th&gt;#&lt;/th&gt;
+        ///            &lt;th&gt;Name&lt;/th&gt;
+        ///            &lt;th&gt;Unit Price&lt;/th&gt;
+        ///            &lt;th&gt;Units&lt;/th&gt;
+        ///            &lt;th&gt;GST&lt;/th&gt;
+        ///            &lt;th&gt;Total&lt;/th&gt;
+        ///        &lt;/thead&gt;
+        ///        rows
+        ///    &lt;/table&gt;
+        ///&lt;/body&gt;
+        ///&lt;/html&gt;.
+        /// </summary>
+        internal static string BillTemplate {
+            get {
+                return ResourceManager.GetString("BillTemplate", resourceCulture);
+            }
+        }
     }
 }

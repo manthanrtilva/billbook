@@ -29,39 +29,42 @@
         private void InitializeComponent()
         {
             this.customerGroupBox = new System.Windows.Forms.GroupBox();
-            this.purchaseGroupBox = new System.Windows.Forms.GroupBox();
-            this.nameGroupBox = new System.Windows.Forms.GroupBox();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.addressGroupBox = new System.Windows.Forms.GroupBox();
-            this.addressTextBox = new System.Windows.Forms.TextBox();
-            this.phoneGroupBox = new System.Windows.Forms.GroupBox();
-            this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.gstGroupBox = new System.Windows.Forms.GroupBox();
             this.gstTextBox = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.phoneGroupBox = new System.Windows.Forms.GroupBox();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.addressGroupBox = new System.Windows.Forms.GroupBox();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
+            this.nameGroupBox = new System.Windows.Forms.GroupBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.purchaseGroupBox = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.addButton = new System.Windows.Forms.Button();
+            this.paymentGroupBox = new System.Windows.Forms.GroupBox();
+            this.paymentComboBox = new System.Windows.Forms.ComboBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.printButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.items = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.amounts = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerGroupBox.SuspendLayout();
-            this.purchaseGroupBox.SuspendLayout();
-            this.nameGroupBox.SuspendLayout();
-            this.addressGroupBox.SuspendLayout();
-            this.phoneGroupBox.SuspendLayout();
             this.gstGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.phoneGroupBox.SuspendLayout();
+            this.addressGroupBox.SuspendLayout();
+            this.nameGroupBox.SuspendLayout();
+            this.purchaseGroupBox.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.paymentGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // customerGroupBox
@@ -78,70 +81,7 @@
             this.customerGroupBox.TabIndex = 0;
             this.customerGroupBox.TabStop = false;
             this.customerGroupBox.Text = "Customer";
-            // 
-            // purchaseGroupBox
-            // 
-            this.purchaseGroupBox.AutoSize = true;
-            this.purchaseGroupBox.Controls.Add(this.tableLayoutPanel1);
-            this.purchaseGroupBox.Controls.Add(this.dataGridView1);
-            this.purchaseGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.purchaseGroupBox.Location = new System.Drawing.Point(0, 147);
-            this.purchaseGroupBox.Name = "purchaseGroupBox";
-            this.purchaseGroupBox.Size = new System.Drawing.Size(976, 1472);
-            this.purchaseGroupBox.TabIndex = 1;
-            this.purchaseGroupBox.TabStop = false;
-            this.purchaseGroupBox.Text = "Purchase";
-            // 
-            // nameGroupBox
-            // 
-            this.nameGroupBox.Controls.Add(this.nameTextBox);
-            this.nameGroupBox.Location = new System.Drawing.Point(3, 20);
-            this.nameGroupBox.Name = "nameGroupBox";
-            this.nameGroupBox.Size = new System.Drawing.Size(397, 50);
-            this.nameGroupBox.TabIndex = 2;
-            this.nameGroupBox.TabStop = false;
-            this.nameGroupBox.Text = "Name";
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.Location = new System.Drawing.Point(6, 20);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(384, 22);
-            this.nameTextBox.TabIndex = 0;
-            // 
-            // addressGroupBox
-            // 
-            this.addressGroupBox.Controls.Add(this.addressTextBox);
-            this.addressGroupBox.Location = new System.Drawing.Point(406, 20);
-            this.addressGroupBox.Name = "addressGroupBox";
-            this.addressGroupBox.Size = new System.Drawing.Size(397, 50);
-            this.addressGroupBox.TabIndex = 3;
-            this.addressGroupBox.TabStop = false;
-            this.addressGroupBox.Text = "Address";
-            // 
-            // addressTextBox
-            // 
-            this.addressTextBox.Location = new System.Drawing.Point(6, 20);
-            this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(384, 22);
-            this.addressTextBox.TabIndex = 0;
-            // 
-            // phoneGroupBox
-            // 
-            this.phoneGroupBox.Controls.Add(this.phoneTextBox);
-            this.phoneGroupBox.Location = new System.Drawing.Point(3, 76);
-            this.phoneGroupBox.Name = "phoneGroupBox";
-            this.phoneGroupBox.Size = new System.Drawing.Size(397, 50);
-            this.phoneGroupBox.TabIndex = 4;
-            this.phoneGroupBox.TabStop = false;
-            this.phoneGroupBox.Text = "Phone";
-            // 
-            // phoneTextBox
-            // 
-            this.phoneTextBox.Location = new System.Drawing.Point(6, 20);
-            this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(384, 22);
-            this.phoneTextBox.TabIndex = 0;
+            this.customerGroupBox.Enter += new System.EventHandler(this.customerGroupBox_Enter);
             // 
             // gstGroupBox
             // 
@@ -160,49 +100,96 @@
             this.gstTextBox.Size = new System.Drawing.Size(384, 22);
             this.gstTextBox.TabIndex = 0;
             // 
-            // dataGridView1
+            // phoneGroupBox
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 449);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(829, 457);
-            this.dataGridView1.TabIndex = 3;
+            this.phoneGroupBox.Controls.Add(this.phoneTextBox);
+            this.phoneGroupBox.Location = new System.Drawing.Point(3, 76);
+            this.phoneGroupBox.Name = "phoneGroupBox";
+            this.phoneGroupBox.Size = new System.Drawing.Size(397, 50);
+            this.phoneGroupBox.TabIndex = 4;
+            this.phoneGroupBox.TabStop = false;
+            this.phoneGroupBox.Text = "Phone";
+            // 
+            // phoneTextBox
+            // 
+            this.phoneTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.phoneTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.phoneTextBox.Location = new System.Drawing.Point(6, 20);
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(384, 22);
+            this.phoneTextBox.TabIndex = 0;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.phoneTextBox_TextChanged);
+            // 
+            // addressGroupBox
+            // 
+            this.addressGroupBox.Controls.Add(this.addressTextBox);
+            this.addressGroupBox.Location = new System.Drawing.Point(406, 20);
+            this.addressGroupBox.Name = "addressGroupBox";
+            this.addressGroupBox.Size = new System.Drawing.Size(397, 50);
+            this.addressGroupBox.TabIndex = 3;
+            this.addressGroupBox.TabStop = false;
+            this.addressGroupBox.Text = "Address";
+            // 
+            // addressTextBox
+            // 
+            this.addressTextBox.Location = new System.Drawing.Point(6, 20);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(384, 22);
+            this.addressTextBox.TabIndex = 0;
+            // 
+            // nameGroupBox
+            // 
+            this.nameGroupBox.Controls.Add(this.nameTextBox);
+            this.nameGroupBox.Location = new System.Drawing.Point(3, 20);
+            this.nameGroupBox.Name = "nameGroupBox";
+            this.nameGroupBox.Size = new System.Drawing.Size(397, 50);
+            this.nameGroupBox.TabIndex = 2;
+            this.nameGroupBox.TabStop = false;
+            this.nameGroupBox.Text = "Name";
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Location = new System.Drawing.Point(6, 20);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(384, 22);
+            this.nameTextBox.TabIndex = 0;
+            // 
+            // purchaseGroupBox
+            // 
+            this.purchaseGroupBox.AutoSize = true;
+            this.purchaseGroupBox.Controls.Add(this.tableLayoutPanel1);
+            this.purchaseGroupBox.Controls.Add(this.dataGridView1);
+            this.purchaseGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.purchaseGroupBox.Location = new System.Drawing.Point(0, 147);
+            this.purchaseGroupBox.Name = "purchaseGroupBox";
+            this.purchaseGroupBox.Size = new System.Drawing.Size(976, 4292);
+            this.purchaseGroupBox.TabIndex = 1;
+            this.purchaseGroupBox.TabStop = false;
+            this.purchaseGroupBox.Text = "Purchase";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.addButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.saveButton, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.printButton, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.paymentGroupBox, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.saveButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.printButton, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 5, 0);
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(453, 69);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(591, 56);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // addButton
@@ -215,32 +202,55 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // paymentGroupBox
+            // 
+            this.paymentGroupBox.Controls.Add(this.paymentComboBox);
+            this.paymentGroupBox.Location = new System.Drawing.Point(84, 3);
+            this.paymentGroupBox.Name = "paymentGroupBox";
+            this.paymentGroupBox.Size = new System.Drawing.Size(130, 50);
+            this.paymentGroupBox.TabIndex = 6;
+            this.paymentGroupBox.TabStop = false;
+            this.paymentGroupBox.Text = "Payment";
+            // 
+            // paymentComboBox
+            // 
+            this.paymentComboBox.FormattingEnabled = true;
+            this.paymentComboBox.Items.AddRange(new object[] {
+            "PAID",
+            "PENDING",
+            "PART_PAID"});
+            this.paymentComboBox.Location = new System.Drawing.Point(3, 20);
+            this.paymentComboBox.Name = "paymentComboBox";
+            this.paymentComboBox.Size = new System.Drawing.Size(120, 24);
+            this.paymentComboBox.TabIndex = 0;
+            // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(84, 3);
+            this.saveButton.Location = new System.Drawing.Point(220, 3);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // printButton
             // 
-            this.printButton.Location = new System.Drawing.Point(165, 3);
+            this.printButton.Location = new System.Drawing.Point(301, 3);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(75, 23);
             this.printButton.TabIndex = 2;
             this.printButton.Text = "Print";
             this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.AutoSize = true;
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.items);
-            this.groupBox1.Location = new System.Drawing.Point(246, 3);
+            this.groupBox1.Location = new System.Drawing.Point(382, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(113, 63);
+            this.groupBox1.Size = new System.Drawing.Size(100, 50);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items";
@@ -256,9 +266,9 @@
             // 
             this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox2.Controls.Add(this.amounts);
-            this.groupBox2.Location = new System.Drawing.Point(365, 3);
+            this.groupBox2.Location = new System.Drawing.Point(488, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(85, 56);
+            this.groupBox2.Size = new System.Drawing.Size(100, 50);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Amount";
@@ -269,6 +279,28 @@
             this.amounts.Name = "amounts";
             this.amounts.Size = new System.Drawing.Size(100, 23);
             this.amounts.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 80);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(829, 457);
+            this.dataGridView1.TabIndex = 3;
             // 
             // Column2
             // 
@@ -318,23 +350,23 @@
             this.Controls.Add(this.purchaseGroupBox);
             this.Controls.Add(this.customerGroupBox);
             this.Name = "Bill";
-            this.Size = new System.Drawing.Size(976, 1619);
+            this.Size = new System.Drawing.Size(976, 4439);
             this.customerGroupBox.ResumeLayout(false);
-            this.purchaseGroupBox.ResumeLayout(false);
-            this.purchaseGroupBox.PerformLayout();
-            this.nameGroupBox.ResumeLayout(false);
-            this.nameGroupBox.PerformLayout();
-            this.addressGroupBox.ResumeLayout(false);
-            this.addressGroupBox.PerformLayout();
-            this.phoneGroupBox.ResumeLayout(false);
-            this.phoneGroupBox.PerformLayout();
             this.gstGroupBox.ResumeLayout(false);
             this.gstGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.phoneGroupBox.ResumeLayout(false);
+            this.phoneGroupBox.PerformLayout();
+            this.addressGroupBox.ResumeLayout(false);
+            this.addressGroupBox.PerformLayout();
+            this.nameGroupBox.ResumeLayout(false);
+            this.nameGroupBox.PerformLayout();
+            this.purchaseGroupBox.ResumeLayout(false);
+            this.purchaseGroupBox.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.paymentGroupBox.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,5 +398,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.GroupBox paymentGroupBox;
+        private System.Windows.Forms.ComboBox paymentComboBox;
     }
 }

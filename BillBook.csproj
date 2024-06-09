@@ -58,6 +58,13 @@
     <Compile Include="BillBook.Designer.cs">
       <DependentUpon>BillBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="BillData.cs" />
+    <Compile Include="BillList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BillList.Designer.cs">
+      <DependentUpon>BillList.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +79,12 @@
     </Compile>
     <Compile Include="DatabaseOperations.cs" />
     <Compile Include="HelperRegistry.cs" />
+    <Compile Include="PrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintForm.Designer.cs">
+      <DependentUpon>PrintForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,11 +121,17 @@
     <EmbeddedResource Include="BillBook.resx">
       <DependentUpon>BillBook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BillList.resx">
+      <DependentUpon>BillList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerList.resx">
       <DependentUpon>CustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintForm.resx">
+      <DependentUpon>PrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
@@ -149,7 +168,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BillTemplate.html" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\BillBook.mdb" />
   </ItemGroup>

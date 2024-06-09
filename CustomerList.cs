@@ -41,7 +41,6 @@ namespace BillBook
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-                Debug.WriteLine("e.ColumnIndex:" + e.ColumnIndex + ",e.RowIndex:" + e.RowIndex + ",id:" + senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
                 if (e.ColumnIndex == 6)
                 {
                     customerForm.ShowMyDialog(

@@ -10,9 +10,11 @@ namespace BillBook
         DatabaseOperations databaseOperations = null;
         ProductList productList = null;
         CustomerList customerList = null;
+        BillList billList = null;
         public BillBook()
         {
             InitializeComponent();
+            HelperRegistry.SetBrowserEmulationVersion(BrowserEmulationVersion.Version11Edge);
         }
 
         private void BillBook_Load(object sender, EventArgs e)
@@ -31,6 +33,20 @@ namespace BillBook
             databaseOperations = new DatabaseOperations();
             productList = new ProductList(databaseOperations);
             customerList = new CustomerList(databaseOperations);
+            billList = new BillList(databaseOperations);
+            billList.viewBill += BillList_viewBill;
+            //newBillToolStripMenuItem_Click(null, null);
+        }
+
+        private void BillList_viewBill(object sender, ViewBillArgs e)
+        {
+            var bill = new Bill(databaseOperations, e.Id);
+            while (Controls.Count > 1)
+            {
+                Controls.RemoveAt(Controls.Count - 1);
+            }
+            bill.Location = new System.Drawing.Point(0, 29);
+            Controls.Add(bill);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,6 +98,17 @@ namespace BillBook
             }
             bill.Location = new System.Drawing.Point(0, 29);
             Controls.Add(bill);
+        }
+
+        private void bilsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            while (Controls.Count > 1)
+            {
+                Controls.RemoveAt(Controls.Count - 1);
+            }
+            billList.Location = new System.Drawing.Point(0, 29);
+            billList.LoadData();
+            Controls.Add(billList);
         }
     }
 }

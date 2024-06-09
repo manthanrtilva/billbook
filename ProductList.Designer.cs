@@ -37,6 +37,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HNS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -84,6 +85,7 @@
             this.Column3,
             this.Quantity,
             this.Column4,
+            this.HNS,
             this.Column6,
             this.Edit,
             this.Column5});
@@ -129,6 +131,13 @@
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.Width = 64;
+            // 
+            // HNS
+            // 
+            this.HNS.HeaderText = "HSN";
+            this.HNS.MinimumWidth = 6;
+            this.HNS.Name = "HNS";
+            this.HNS.Width = 65;
             // 
             // Column6
             // 
@@ -181,6 +190,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HNS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;

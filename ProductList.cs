@@ -18,7 +18,7 @@ namespace BillBook
 
         private void Product_updated(object sender, ProductUpdatedArgs e)
         {
-            dataGridView1.Rows[e.Rowid].SetValues(e.Id,e.Name,e.Price,e.Quantity,e.Gst);
+            dataGridView1.Rows[e.Rowid].SetValues(e.Id,e.Name,e.Price,e.Quantity,e.Gst,e.Hsn);
         }
 
         private void search_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace BillBook
             dataGridView1.Rows.Clear();
             databaseOperations.GetProducts(nameTextBox.Text.Trim().ToUpper()).ForEach(product =>
             {
-                dataGridView1.Rows.Add(product.Id, product.Name, product.Price, product.Quantity, product.Gst,product.Created,"Edit","Delete");
+                dataGridView1.Rows.Add(product.Id, product.Name, product.Price, product.Quantity, product.Gst, product.Hsn, product.Created,"Edit","Delete");
             });
         }
 
@@ -46,12 +46,11 @@ namespace BillBook
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-                Debug.WriteLine("e.ColumnIndex:" + e.ColumnIndex + ",e.RowIndex:" + e.RowIndex + ",id:" + senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 7)
                 {
-                    productForm.ShowMyDialog(e.RowIndex, Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString()), senderGrid.Rows[e.RowIndex].Cells[1].Value.ToString(), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[2].Value.ToString()), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[3].Value.ToString()), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[4].Value.ToString()));
+                    productForm.ShowMyDialog(e.RowIndex, Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString()), senderGrid.Rows[e.RowIndex].Cells[1].Value.ToString(), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[2].Value.ToString()), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[3].Value.ToString()), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[4].Value.ToString()), senderGrid.Rows[e.RowIndex].Cells[5].Value.ToString());
                 }
-                else if (e.ColumnIndex == 7)
+                else if (e.ColumnIndex == 8)
                 {
                     databaseOperations.DeleteProduct(Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString()));
                     dataGridView1.Rows.RemoveAt(e.RowIndex);

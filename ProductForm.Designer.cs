@@ -38,6 +38,8 @@
             this.quantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.hsnGroupBox = new System.Windows.Forms.GroupBox();
+            this.hsnTextBox = new System.Windows.Forms.TextBox();
             this.nameGroupBox.SuspendLayout();
             this.priceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).BeginInit();
@@ -45,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gstNumericUpDown)).BeginInit();
             this.quantityGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quantityNumericUpDown)).BeginInit();
+            this.hsnGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameGroupBox
@@ -79,7 +82,7 @@
             this.priceNumericUpDown.Location = new System.Drawing.Point(6, 20);
             this.priceNumericUpDown.Name = "priceNumericUpDown";
             this.priceNumericUpDown.Size = new System.Drawing.Size(384, 22);
-            this.priceNumericUpDown.TabIndex = 0;
+            this.priceNumericUpDown.TabIndex = 1;
             // 
             // gstGroupBox
             // 
@@ -96,7 +99,7 @@
             this.gstNumericUpDown.Location = new System.Drawing.Point(6, 20);
             this.gstNumericUpDown.Name = "gstNumericUpDown";
             this.gstNumericUpDown.Size = new System.Drawing.Size(384, 22);
-            this.gstNumericUpDown.TabIndex = 0;
+            this.gstNumericUpDown.TabIndex = 2;
             // 
             // quantityGroupBox
             // 
@@ -113,27 +116,46 @@
             this.quantityNumericUpDown.Location = new System.Drawing.Point(6, 20);
             this.quantityNumericUpDown.Name = "quantityNumericUpDown";
             this.quantityNumericUpDown.Size = new System.Drawing.Size(384, 22);
-            this.quantityNumericUpDown.TabIndex = 0;
+            this.quantityNumericUpDown.TabIndex = 3;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(4, 247);
+            this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.saveButton.Location = new System.Drawing.Point(4, 287);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 4;
+            this.saveButton.TabIndex = 5;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(329, 247);
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(329, 287);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 5;
+            this.cancelButton.TabIndex = 6;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // hsnGroupBox
+            // 
+            this.hsnGroupBox.Controls.Add(this.hsnTextBox);
+            this.hsnGroupBox.Location = new System.Drawing.Point(4, 236);
+            this.hsnGroupBox.Name = "hsnGroupBox";
+            this.hsnGroupBox.Size = new System.Drawing.Size(400, 50);
+            this.hsnGroupBox.TabIndex = 4;
+            this.hsnGroupBox.TabStop = false;
+            this.hsnGroupBox.Text = "HSN";
+            // 
+            // hsnTextBox
+            // 
+            this.hsnTextBox.Location = new System.Drawing.Point(6, 20);
+            this.hsnTextBox.Name = "hsnTextBox";
+            this.hsnTextBox.Size = new System.Drawing.Size(384, 22);
+            this.hsnTextBox.TabIndex = 4;
             // 
             // ProductForm
             // 
@@ -141,7 +163,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(408, 279);
+            this.ClientSize = new System.Drawing.Size(408, 322);
+            this.Controls.Add(this.hsnGroupBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.quantityGroupBox);
@@ -159,6 +182,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gstNumericUpDown)).EndInit();
             this.quantityGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.quantityNumericUpDown)).EndInit();
+            this.hsnGroupBox.ResumeLayout(false);
+            this.hsnGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -175,5 +200,7 @@
         private System.Windows.Forms.NumericUpDown quantityNumericUpDown;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.GroupBox hsnGroupBox;
+        private System.Windows.Forms.TextBox hsnTextBox;
     }
 }
