@@ -1,6 +1,7 @@
 ﻿using BillBook.Properties;
 using Microsoft.Win32;
 using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -149,6 +150,12 @@ namespace BillBook
                     var template = reader.ReadToEnd();
                     string pattern = @"\brows\b";
                     string result = Regex.Replace(template, pattern, replace);
+                    pattern = @"\b_GSTNO_\b";
+                    result = Regex.Replace(result, pattern, ConfigurationManager.AppSettings["GSTNO"]);
+                    pattern = @"\b_PANNO_\b";
+                    result = Regex.Replace(result, pattern, ConfigurationManager.AppSettings["PANNO"]);
+                    pattern = @"\b_StateCode_\b";
+                    result = Regex.Replace(result, pattern, ConfigurationManager.AppSettings["STATECODE"]);
                     return result;
                 }
             }
