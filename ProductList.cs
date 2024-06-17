@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace BillBook
 {
@@ -48,7 +50,17 @@ namespace BillBook
             {
                 if (e.ColumnIndex == 7)
                 {
-                    productForm.ShowMyDialog(e.RowIndex, Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString()), senderGrid.Rows[e.RowIndex].Cells[1].Value.ToString(), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[2].Value.ToString()), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[3].Value.ToString()), Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[4].Value.ToString()), senderGrid.Rows[e.RowIndex].Cells[5].Value.ToString());
+                    //ShowMyDialog(int rowid, int id, string name, int price, int gst, int quaintity, string hsn)
+                    
+                    
+                productForm.ShowMyDialog(e.RowIndex, // rowid
+                        Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[0].Value.ToString()),  // id
+                        senderGrid.Rows[e.RowIndex].Cells[1].Value.ToString(),  // name
+                        Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[2].Value.ToString()),  //price
+                        Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[4].Value.ToString()), // gst
+                        Int32.Parse(senderGrid.Rows[e.RowIndex].Cells[3].Value.ToString()), //quaintity
+                        senderGrid.Rows[e.RowIndex].Cells[5].Value.ToString() // hsn
+                        );
                 }
                 else if (e.ColumnIndex == 8)
                 {
